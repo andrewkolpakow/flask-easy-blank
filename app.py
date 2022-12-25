@@ -10,7 +10,6 @@ from views.directors import directors_ns
 from views.genres import genres_ns
 from views.movies import movies_ns
 
-
 # функция создания основного объекта app
 def create_app(config_object):
      app = Flask(__name__)
@@ -30,6 +29,8 @@ app = create_app(Config())
 app.debug = True
 #
 if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
     app.run(host="localhost", port=10001, debug=True)
 
 
